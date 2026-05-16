@@ -1,7 +1,7 @@
 FROM rust:latest as builder
 WORKDIR /app
-COPY Cargo.toml Cargo.lock ./
-COPY src ./src
+COPY relay-server/Cargo.toml relay-server/Cargo.lock ./
+COPY relay-server/src ./src
 RUN cargo build --release
 
 FROM debian:bookworm-slim
