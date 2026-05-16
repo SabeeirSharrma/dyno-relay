@@ -1,2 +1,4 @@
-*/target
-*/.env
+relay-server/target
+relay-server/.env
+android-client/node_modules
+android-client/.expo

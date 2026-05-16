@@ -31,6 +31,9 @@ struct AppState {
 
 #[tokio::main]
 async fn main() {
+    // Load .env file if it exists
+    dotenvy::dotenv().ok();
+
     let api_key = std::env::var("RELAY_API_KEY")
         .expect("RELAY_API_KEY must be set");
 
