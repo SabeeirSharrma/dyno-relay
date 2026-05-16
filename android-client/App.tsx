@@ -64,9 +64,12 @@ export default function App() {
 
     const connect = () => {
       try {
-        const wsUrl = serverUrl.startsWith('http') 
-          ? serverUrl.replace('http', 'ws') 
-          : serverUrl;
+        let wsUrl = serverUrl;
+        if (wsUrl.startsWith('https://')) {
+          wsUrl = wsUrl.replace('https://', 'wss://');
+        } else if (wsUrl.startsWith('http://')) {
+          wsUrl = wsUrl.replace('http://', 'ws://');
+        }
         
         const fullUrl = `${wsUrl}/ws?key=${encodeURIComponent(apiKey)}`;
         ws = new WebSocket(fullUrl);
